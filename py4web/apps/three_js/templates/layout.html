@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="[[=URL('static')]]/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAAQEAAAEAIAAwAAAAFgAAACgAAAABAAAAAgAAAAEAIAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAA=="/>
+    <link rel="stylesheet" href="css/bulma.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    [[block page_head]]<!-- individual pages can customize header here -->[[end]]
+    <style>
+      textarea {width:100%; min-height:120px; border-radius:5px}
+      button.clicked {pointer-events: none; background: #00d1b2;}
+      button.clicked ~ button:not(.clicked) {display: none}
+      h1 { font-size: 2em; margin: 1em 0 0.5em 0 }
+      h2 { font-size: 1.6em; margin: 0.7em 0 0.3em 0 }
+      .post { background-color: #f1f1f1; border-radius: 5px; padding: 5px; margin-bottom: 10px;}
+      .post blockquote { font-style: italic; }
+      thead tr {background-color:#f1f1f1}
+      td, th {padding: 5px; text-align: left; vertical-align:top}
+      thead th {vertical-align:bottom}
+    </style>
+  </head>
+  <body class="Site has-background-black">
+    <section class="Site-content section">
+      <!-- beginning of HTML inserted by extending template -->
+      [[include]]
+      <!-- end of HTML inserted by extending template -->
+    </section>
+    <footer class="footer">
+      <div class="content has-text-centered has-text-white">
+        Made with py4web
+      </div>
+    </footer>
+  </body>
+  <script src="js/sugar.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/vue.min.js"></script>
+  [[block page_scripts]]<!-- individual pages can add scripts here -->[[end]]
+</html>
