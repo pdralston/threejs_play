@@ -1,0 +1,26 @@
+[[extend "layout.html"]]
+
+<container id="vue-target">
+
+  <section>
+    <h1>
+      {{ title_text }}
+    </h1>
+  </section>
+
+  <section id="first_exercise">
+    <h3>Exercise 1</h3>
+  </section>
+
+</container>
+
+
+[[block page_scripts]]
+<!-- Loads the index-specific js for Vue -->
+<script>
+    let title_text = "[[=XML(title_text)]]"
+</script>
+<script src="js/index.js"></script>
+<script src="js/three.js"></script>
+<script src="js/threejs_play.js"></script>
+[[end]]
