@@ -8,7 +8,8 @@ let init = (app) => {
 
     // This is the Vue data.
     app.data = {
-        title_text: title_text
+        title_text: title_text,
+        exercise_count: 2
     };
 
     // We form the dictionary of all methods, so we can assign them
