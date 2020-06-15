@@ -4,22 +4,32 @@ if (WEBGL.isWebGLAvailable()) {
 
     let threejs_first_exercise = function () {
         let geometry = new THREE.BoxGeometry(2, 4, 4);
-        let material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-        let renderer = new THREE.WebGLRenderer();
+        let material = new THREE.MeshLambertMaterial({color: 0x00ff00});
+        let renderer = new THREE.WebGLRenderer({antialias: true});
         let scene = new THREE.Scene();
         let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         let shape = new THREE.Mesh(geometry, material)
         let target = document.getElementById(1);
-
+        let light = new THREE.PointLight(0x5e5e5e, 1, 500);
+        light.position.set(10, 0, 25);
         scene.add(shape);
+        scene.add(light);
         camera.position.z = 10;
         renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+        renderer.setClearColor(0x738076)
         target.appendChild(renderer.domElement);
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        })
 
         let animate = function () {
             requestAnimationFrame(animate);
             shape.rotation.x += 0.01;
             shape.rotation.y += 0.01;
+            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
             renderer.render(scene, camera);
         };
 
@@ -43,16 +53,26 @@ if (WEBGL.isWebGLAvailable()) {
             vertexShader: document.getElementById('vs').textContent.trim(),
             fragmentShader: document.getElementById('fs').textContent.trim()
         });
-        let geometry = new THREE.CircleBufferGeometry(5);
+        let geometry = new THREE.SphereBufferGeometry(5,10, 10)
         let shape = new THREE.Mesh(geometry, material);
         let scene = new THREE.Scene();
         let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-        let renderer = new THREE.WebGLRenderer({canvas: canvas, context: context});
+        let renderer = new THREE.WebGLRenderer({canvas: canvas, context: context, antialias: true});
+        let light = new THREE.PointLight(0x213ade, 1, 500);
 
+        light.position.set(5,0,0);
+        scene.add(light);
         scene.add(shape);
         camera.position.z = 20;
         renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+        renderer.setClearColor(0x738076)
         target.appendChild(renderer.domElement);
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        })
 
         let animate = function () {
             requestAnimationFrame(animate);
